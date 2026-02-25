@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 //this will be responsible for talking directly to the Db
 namespace EventManagementAPI.Repositories
 {
-    public class UserRepository : IUserRepository{
+    public class UserRepository : IUserRepository {
         private readonly ApplicationDbContext _context;
 
         public UserRepository(ApplicationDbContext context) {

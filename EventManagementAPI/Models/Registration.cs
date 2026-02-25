@@ -1,7 +1,7 @@
 ﻿namespace EventManagementAPI.Models
 {
     //the model (data) for the Registration
-    public class Registration{
+    public class Registration {
         public Guid Id { get; set; }
         //this is the EVENT.id
         public Guid EventId { get; set; }

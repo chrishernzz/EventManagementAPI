@@ -4,7 +4,7 @@ using EventManagementAPI.Repositories;
 //cpp - contains business logic of the systems (rules)
 namespace EventManagementAPI.Services
 {
-    public class RegistrationService : IRegistrationService{
+    public class RegistrationService : IRegistrationService {
         private readonly IRegistrationRepository _registrationRepository;
 
         //constructor

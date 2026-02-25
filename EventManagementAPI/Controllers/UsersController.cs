@@ -8,7 +8,7 @@ namespace EventManagementAPI.Controllers
     [ApiController]
     [Route("api/[controller]")]
 
-    public class UsersController: ControllerBase{
+    public class UsersController: ControllerBase {
         //call the service that has the methods you need
         private readonly IUserService _userService;
         public UsersController(IUserService userService) {

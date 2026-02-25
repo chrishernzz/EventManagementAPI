@@ -15,18 +15,18 @@ namespace EventManagementAPI.Services
 
         //precondition: none
         //postcondition: returns all the users information
-        public List<User> GetUsers(){
+        public List<User> GetUsers() {
             return _userRepository.GetAll();
         }
 
         //precondition: none
         //postcondition: loops through the users and returns the Id only if found else null
-        public User? GetUser(Guid Id){
+        public User? GetUser(Guid Id) {
             return _userRepository.GetById(Id);
         }
         //precondition: none
         //postcondition: returns an user that was created 
-        public User CreateUser(User input){
+        public User CreateUser(User input) {
             //create an object of instance here
             User newUser = new User();
             newUser.Id = Guid.NewGuid();

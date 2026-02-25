@@ -8,13 +8,13 @@ namespace EventManagementAPI.Controllers
     [ApiController]
     //this route will give me the POST /events{id}/registrations
     [Route("api/events/{Id:guid}/registrations")]
-    public class RegistrationsController : ControllerBase{
+    public class RegistrationsController : ControllerBase {
         //call both methods since it will be needed
         private readonly IEventService _eventService;
         private readonly IRegistrationService _registrationService;
 
         //constructor
-        public RegistrationsController(IEventService eventService, IRegistrationService registrationService){
+        public RegistrationsController(IEventService eventService, IRegistrationService registrationService) {
             _eventService = eventService;
             _registrationService = registrationService;
         }

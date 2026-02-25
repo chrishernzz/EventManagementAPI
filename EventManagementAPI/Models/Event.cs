@@ -1,7 +1,7 @@
 ﻿namespace EventManagementAPI.Models
 {
     //the model (data) for the Event
-    public class Event{
+    public class Event {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

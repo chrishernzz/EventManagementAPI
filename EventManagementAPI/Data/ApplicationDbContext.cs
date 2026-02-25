@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 //the bridge between models and actual SQL Db
 namespace EventManagementAPI.Data
 {
-    public class ApplicationDbContext : DbContext{
+    public class ApplicationDbContext : DbContext {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         //these 3 represent the Db tables
