@@ -19,8 +19,8 @@ namespace EventManagementAPI.Services
             newRegistration.Id = Guid.NewGuid();
             newRegistration.EventId = EventId;
             newRegistration.UserId = UserId;
-            newRegistration.RegisteredAt = newRegistration.RegisteredAt;
-            newRegistration.Status = newRegistration.Status;
+            newRegistration.RegisteredAt = DateTime.UtcNow;
+            newRegistration.Status = "Registered";
 
             return _registrationRepository.Add(newRegistration);
         }

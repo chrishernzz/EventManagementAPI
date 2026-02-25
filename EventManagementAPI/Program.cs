@@ -17,8 +17,17 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddSingleton<IEventService, EventService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<EventManagementAPI.Repositories.IEventRepository, EventManagementAPI.Repositories.EventRepository>();
+
+//Doing Dependency Injection Registrations
+//Events 
 builder.Services.AddScoped<EventManagementAPI.Services.IEventService, EventManagementAPI.Services.EventService>();
+builder.Services.AddScoped<EventManagementAPI.Repositories.IEventRepository, EventManagementAPI.Repositories.EventRepository>();
+//Users
+builder.Services.AddScoped<EventManagementAPI.Services.IUserService, EventManagementAPI.Services.UserService>();
+builder.Services.AddScoped<EventManagementAPI.Repositories.IUserRepository, EventManagementAPI.Repositories.UserRepository>();
+//Registrations
+builder.Services.AddScoped<EventManagementAPI.Services.IRegistrationService, EventManagementAPI.Services.RegistrationService>();
+builder.Services.AddScoped<EventManagementAPI.Repositories.IRegistrationRepository, EventManagementAPI.Repositories.RegistrationRepository>();
 
 
 var app = builder.Build();
