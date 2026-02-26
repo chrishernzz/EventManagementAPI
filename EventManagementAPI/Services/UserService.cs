@@ -14,7 +14,7 @@ namespace EventManagementAPI.Services
         }
 
         //precondition: none
-        //postcondition: returns all the users information
+        //postcondition: returns all the users informationx
         public List<User> GetUsers() {
             return _userRepository.GetAll();
         }

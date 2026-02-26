@@ -31,8 +31,31 @@ namespace EventManagementAPI.Controllers
             }
             //pass in the 
             Registration reg = _registrationService.CreateRegistration(eventId, UserId);
-            return Created("", reg);
+            //return Created("", reg);
+
+            //option 1 you can do
+            /*Registration dto = new RegistrationDto(
+                reg.Id,
+                reg.EventId,
+                reg.UserId,
+                reg.RegisteredAt,
+                reg.Status
+             );
+
+            return Created("",dto);
+            */
+
+            //otpion 2 where you just call what you want to pass
+            return Created("", new { reg.Id });
         }
 
     }
 }
+//DTO using record that says it shuold have that type of data
+//public record RegistrationDto(
+//    Guid Id,
+//    Guid EventId,
+//    Guid UserId,
+//    DateTime RegisteredAt,
+//    string Status
+//);

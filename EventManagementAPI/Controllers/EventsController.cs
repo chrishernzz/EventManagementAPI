@@ -41,6 +41,7 @@ namespace EventManagementAPI.Controllers
             if (string.IsNullOrWhiteSpace(input.Title)) {
                 return BadRequest("Title is required");
             }
+            //enddate must be after start data
             if(input.EndDateTime <= input.StartDateTime) {
                 return BadRequest("EndDateTime must be after StartDateTime.");
             }
