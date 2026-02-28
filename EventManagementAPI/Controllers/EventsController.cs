@@ -3,7 +3,7 @@ using EventManagementAPI.Models;
 using EventManagementAPI.Services;
 using EventManagementAPI.Dtos;
 
-//contains only HTTP requests 
+//contains only HTTP requests and uses only Request and Response 
 namespace EventManagementAPI.Controllers
 {
     [ApiController]

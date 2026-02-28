@@ -56,9 +56,10 @@ namespace EventManagementAPI.Services
             newUser.Email = request.Email;
             newUser.CreatedAt = DateTime.UtcNow;
 
+            //this goes to repository and inserts to the Db and comes back when done
             User created = _userRepository.Add(newUser);
 
-            //copy the values to the DTO, what the user can see
+            //now going to convert the entity (values) to the DTO
             UserResponse response = new UserResponse();
             response.Id = created.Id;
             response.FirstName = created.FirstName;

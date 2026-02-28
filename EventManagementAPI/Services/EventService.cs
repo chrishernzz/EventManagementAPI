@@ -81,7 +81,7 @@ namespace EventManagementAPI.Services
             //add the event to the Db
             Event created = _eventRepository.Add(ev);
 
-            //now going to copy the values to the DTO
+            //now going to convert the entity (values) to the DTO
             EventResponse response = new EventResponse();
             response.Id = created.Id;
             response.Title = created.Title;
