@@ -8,7 +8,6 @@ namespace EventManagementAPI.Repositories
         IEnumerable<Event> GetAll();
         Event? GetById(Guid id);
         Event Add(Event ev);
-
         //this indicates that it will return a true or false but might take time since it's going in the Db (asynchronous)
         Task<bool> ExistsAsync(Guid eventId);
     }

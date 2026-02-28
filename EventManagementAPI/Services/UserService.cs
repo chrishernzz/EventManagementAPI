@@ -1,4 +1,5 @@
-﻿using EventManagementAPI.Models;
+﻿using EventManagementAPI.Dtos;
+using EventManagementAPI.Models;
 using EventManagementAPI.Repositories;
 
 //cpp - contains business logic of the systems (rules)
@@ -14,28 +15,58 @@ namespace EventManagementAPI.Services
         }
 
         //precondition: none
-        //postcondition: returns all the users informationx
-        public List<User> GetUsers() {
-            return _userRepository.GetAll();
+        //postcondition: returns all the users information
+        public  IEnumerable<UserResponse> GetUsers() {
+            return _userRepository.GetAll().Select(u => new UserResponse{
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                CreatedAt = u.CreatedAt
+            });
         }
 
         //precondition: none
-        //postcondition: loops through the users and returns the Id only if found else null
-        public User? GetUser(Guid Id) {
-            return _userRepository.GetById(Id);
+        //postcondition: returns UserResponse if user exists, otherwise null
+        public UserResponse? GetUserById(Guid Id) {
+            User? user = _userRepository.GetById(Id);
+            //check if id found if not then return
+            if(user == null) {
+                return null;
+            }
+
+            UserResponse response = new UserResponse();
+            response.Id = user.Id;
+            response.FirstName = user.FirstName;
+            response.LastName = user.LastName;
+            response.Email = user.Email;
+            response.CreatedAt = user.CreatedAt;
+
+            return response;
         }
-        //precondition: none
-        //postcondition: returns an user that was created 
-        public User CreateUser(User input) {
-            //create an object of instance here
+
+        //precondition: call the User to get the information of the Db
+        //postcondition: returns an DTO that does not include all the values from the User
+        public UserResponse CreateUser(CreateUserRequest request) {
+            //create an object of instance here with the setters
             User newUser = new User();
             newUser.Id = Guid.NewGuid();
-            newUser.FirstName = input.FirstName;
-            newUser.LastName = input.LastName;
-            newUser.Email = input.Email;
-            newUser.CreatedAt = input.CreatedAt;
+            newUser.FirstName = request.FirstName;
+            newUser.LastName = request.LastName;
+            newUser.Email = request.Email;
+            newUser.CreatedAt = DateTime.UtcNow;
 
-            return _userRepository.Add(newUser);
+            User created = _userRepository.Add(newUser);
+
+            //copy the values to the DTO, what the user can see
+            UserResponse response = new UserResponse();
+            response.Id = created.Id;
+            response.FirstName = created.FirstName;
+            response.LastName = created.LastName;
+            response.Email = created.Email;
+            response.CreatedAt = created.CreatedAt;
+
+            return response;
         }
     }
 }
