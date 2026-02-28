@@ -1,6 +1,6 @@
 ﻿namespace EventManagementAPI.Models
 {
-    //the model (data) for the Registration
+    //the real model (data) for the Registration
     public class User {
         public Guid Id { get; set; }
         public string FirstName { get; set; } = string.Empty;

@@ -1,6 +1,6 @@
 ﻿namespace EventManagementAPI.Models
 {
-    //the model (data) for the Registration
+    //the real model (data) for the Registration
     public class Registration {
         public Guid Id { get; set; }
         //this is the EVENT.id
@@ -8,7 +8,7 @@
         //this is the USER.id
         public Guid UserId { get; set; }
         public DateTime RegisteredAt { get; set; }
-        public string Status { get; set; } = string.Empty;
+        public string Status { get; set; } = "Pending";
         public Event? Event { get; set; }
         public User? User { get; set; }
 

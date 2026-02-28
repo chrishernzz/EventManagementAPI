@@ -32,10 +32,21 @@ namespace EventManagementAPI.Controllers
             }
             return Ok(us);
         }
-        //precondition: service must get the data information
+        //precondition: service must get the data information and check input validation
         //postcondition: returns the information of the event 
         [HttpPost]
         public ActionResult<User> CreateUser([FromBody] User input) {
+            //firstname, lastname, and email must be filled (if not bad request = invalid input)
+            if (string.IsNullOrWhiteSpace(input.FirstName)) {
+                return BadRequest("FirstName is required.");
+            }
+            if (string.IsNullOrWhiteSpace(input.LastName)) {
+                return BadRequest("LastName is required.");
+            }
+            if (string.IsNullOrWhiteSpace(input.Email)) {
+                return BadRequest("Email is required.");
+            }
+
             User newUser = _userService.CreateUser(input);
             return CreatedAtAction(nameof(GetUser), new { id = newUser.Id }, newUser);
         }

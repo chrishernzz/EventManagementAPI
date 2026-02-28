@@ -5,8 +5,9 @@ namespace EventManagementAPI.Repositories
 {
     public interface IUserRepository {
         //call all the functions that are going to be used
-        List<User> GetAll();
-        User? GetById(Guid Id);
-        User Add(User us);
+        IEnumerable<User> GetAll();
+        User? GetById(Guid id);
+        User Add(User user);
+        Task<bool> ExistsAsync(Guid userId);
     }
 }
