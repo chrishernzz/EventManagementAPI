@@ -5,6 +5,7 @@ using EventManagementAPI.Models;
 namespace EventManagementAPI.Services
 {
     public interface IRegistrationService {
+        //creating a task that indicates it will return a value no matter how long it takes
         Task<RegistrationResult> RegisterAsync(Guid eventId, CreateRegistrationRequest request);
     }
 }

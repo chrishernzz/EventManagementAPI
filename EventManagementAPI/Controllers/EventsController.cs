@@ -67,6 +67,7 @@ namespace EventManagementAPI.Controllers
             //must not be empty, title must have some input
             if (string.IsNullOrWhiteSpace(input.Title)) {
                 return BadRequest("Title is required");
+                //return BadRequest(new ErrorResponse("Title is required"));
             }
             //end date must be after start data
             if(input.EndDateTime <= input.StartDateTime) {

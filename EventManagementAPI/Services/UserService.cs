@@ -48,7 +48,7 @@ namespace EventManagementAPI.Services
         //precondition: call the User to get the information of the Db
         //postcondition: returns an DTO that does not include all the values from the User
         public UserResponse CreateUser(CreateUserRequest request) {
-            //create an object of instance here with the setters
+            //create an object of instance here with the setters of the actual model
             User newUser = new User();
             newUser.Id = Guid.NewGuid();
             newUser.FirstName = request.FirstName;
